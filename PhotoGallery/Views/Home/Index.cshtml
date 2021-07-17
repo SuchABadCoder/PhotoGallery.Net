@@ -1,0 +1,87 @@
+﻿@using PhotoGallery.Models;
+@{
+    ViewBag.Title = "Home Page";
+}
+@model List<Category>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                Categories
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    @Html.ActionLink("All", "Filter", "Home", routeValues: new { categoryName = "All" }, htmlAttributes: null)
+                </li>
+                @foreach (var category in Model)
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink(category.Name, "Filter", "Home", routeValues: new { categoryName = category.Name }, htmlAttributes: null)
+                    </li>
+                }
+
+                @Html.ActionLink("Rate", "Filter", "Home", routeValues: new { categoryName = "Rate" }, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1"})
+                @Html.ActionLink("Add Photo", "Index", "AddPhoto", routeValues: null, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1" })
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            @foreach (var photo in ViewBag.photos)
+            {
+                <div class="col-md-4">
+                    <div class="card my-2">
+                        @Html.Raw("<img class=\"image-thumbnail\" src=\"data:image/jpeg;base64,"
+                + Convert.ToBase64String(photo.Image) + "\" />")
+                        <div class="card-body">
+                            <small>Category: @photo.Category.Name</small>
+                        </div>
+                        @Html.ActionLink("View", "Index", "ViewPhoto", routeValues: new { photoId = photo.Id }, htmlAttributes: new { @class = "btn btn-outline-dark btn-sm m-1" })
+                        @if (photo.IsLiked(User.Identity.Name))
+                        {
+                            <button type="submit" id="like-@photo.Id" onclick="like(@photo.Id)" class="btn btn-block btn-dark btn-sm m-1">Disike @photo.LikesCount()</button>
+                        }
+                        else
+                        {
+                            <button type="submit" id="like-@photo.Id" onclick="like(@photo.Id)" class="btn btn-outline-dark btn-sm m-1">Like @photo.LikesCount()</button>
+                        }
+                    </div>
+                </div>
+            }
+            @if (((List<Photo>)ViewBag.photos).Count() == 0)
+            {
+                <h3>No photos</h3>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function like(id) {
+        var like = document.getElementById('like-'+id);
+        var likesCount = parseInt(like.innerText.match(/\d+/));
+       
+        $.ajax({
+            url: "@Url.Action("Like", "ViewPhoto")",
+            type: "POST",
+            data: {
+                'id': id
+            },
+            dataType: 'json',
+            success: function () {
+                if (like.innerText.startsWith("Like")) {
+                    likesCount += 1;
+                    like.innerText = "Dislike " + likesCount;
+                    like.className = 'btn btn-block btn-dark btn-sm m-1';
+                }
+                else {
+                    likesCount -= 1;
+                    like.innerText = "Like " + likesCount;
+                    like.className = 'btn btn-outline-dark btn-sm m-1';
+                }
+            }
+        });
+    }
+</script>
