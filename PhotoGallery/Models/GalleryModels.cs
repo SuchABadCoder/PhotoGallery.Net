@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
+using Microsoft.AspNet.Identity;
 
 namespace PhotoGallery.Models
 {
@@ -28,6 +29,7 @@ namespace PhotoGallery.Models
         public string Description { get; set; }
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
+        public string OwnerName { get; set; }
         public IList<ApplicationUser> Likes { get; set; }
 
         public Photo()

@@ -199,6 +199,18 @@
     <Compile Include="Migrations\202106161347030_FK_to_category.Designer.cs">
       <DependentUpon>202106161347030_FK_to_category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107171559462_PhotoOwner.cs" />
+    <Compile Include="Migrations\202107171559462_PhotoOwner.Designer.cs">
+      <DependentUpon>202107171559462_PhotoOwner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107171623002_BackToPrevMigration.cs" />
+    <Compile Include="Migrations\202107171623002_BackToPrevMigration.Designer.cs">
+      <DependentUpon>202107171623002_BackToPrevMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107171626505_AddOwner.cs" />
+    <Compile Include="Migrations\202107171626505_AddOwner.Designer.cs">
+      <DependentUpon>202107171626505_AddOwner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GalleryModels.cs" />
@@ -301,6 +313,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106161347030_FK_to_category.resx">
       <DependentUpon>202106161347030_FK_to_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107171559462_PhotoOwner.resx">
+      <DependentUpon>202107171559462_PhotoOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107171623002_BackToPrevMigration.resx">
+      <DependentUpon>202107171623002_BackToPrevMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107171626505_AddOwner.resx">
+      <DependentUpon>202107171626505_AddOwner.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

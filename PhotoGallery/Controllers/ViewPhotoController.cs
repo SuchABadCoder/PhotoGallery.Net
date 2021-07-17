@@ -43,5 +43,14 @@ namespace PhotoGallery.Controllers
 
             return Json(true, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Delete(int photoId)
+        {
+            var photo = db.Photos.Where(p => p.Id == photoId).FirstOrDefault();
+            db.Photos.Remove(photo);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

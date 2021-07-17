@@ -19,6 +19,7 @@ namespace PhotoGallery.Controllers
         [HttpPost]
         public ActionResult Upload(Photo model, HttpPostedFileBase uploadImage)
         {
+            var userName = User.Identity.Name;
             byte[] img = null;
             if (uploadImage != null)
             {
@@ -27,7 +28,8 @@ namespace PhotoGallery.Controllers
                     img = binaryReader.ReadBytes(uploadImage.ContentLength);
                     model.Image = img;
                 }
-                var ct = Request.Form["category"];
+
+                model.OwnerName = userName;
                 if (Request.Form["category"] != "none")
                 {
                     var category_name = Request.Form["category"];

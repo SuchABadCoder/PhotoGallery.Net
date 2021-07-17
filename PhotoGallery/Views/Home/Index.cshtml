@@ -22,9 +22,12 @@
                     </li>
                 }
 
-                @Html.ActionLink("Rate", "Filter", "Home", routeValues: new { categoryName = "Rate" }, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1"})
-                @Html.ActionLink("Add Photo", "Index", "AddPhoto", routeValues: null, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1" })
-            </ul>
+                @Html.ActionLink("Rate", "Filter", "Home", routeValues: new { categoryName = "Rate" }, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1" })
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Add Photo", "Index", "AddPhoto", routeValues: null, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1" })
+                }
+                </ul>
         </div>
     </div>
     <div class="col-md-9">
