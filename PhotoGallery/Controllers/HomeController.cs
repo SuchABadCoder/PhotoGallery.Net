@@ -32,14 +32,14 @@ namespace PhotoGallery.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This website allows you to publish images and estimate other people publications.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "You can share ideas and suggestions for improving the site here:";
 
             return View();
         }

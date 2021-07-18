@@ -9,14 +9,16 @@
         <li class="nav-item">
             @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
         </li>
-        <li class="nav-item"><a class = "nav-link" href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+        <li class="nav-item"><a class = "nav-link" href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
     </ul>
     }
 }
 else
 {
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
-        <li class="nav-item">@Html.ActionLink("Выполнить вход", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
-    </ul>
+    <div class="navbar-right">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">@Html.ActionLink("Registration", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+            <li class="nav-item">@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+        </ul>
+    </div>
 }

@@ -34,24 +34,11 @@ namespace PhotoGallery.Models
             return new ApplicationDbContext();
         }
 
-        public void CreateAdmin(ApplicationUser user)
-        {
-            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(this));
-
-            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(this));
-
-            //var adminRole = new IdentityRole { Name = "admin" };
-            //var userRole = new IdentityRole { Name = "user" };
-
-            //roleManager.Create(userRole);
-            //roleManager.Create(adminRole);
-
-            //var admin = new ApplicationUser { Email = "Gayday57@gmail.com", UserName = "IamRick" };
-           // var result = userManager.Create(admin, "Y@rik2000");
-
-            //if (result.Succeeded)
-                userManager.AddToRole(user.Id, "admin");
-        }
+        //public void CreateAdmin(ApplicationUser user)
+        //{
+        //    var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(this));
+        //    userManager.AddToRole(user.Id, "admin");
+        //}
     }
 
 }
