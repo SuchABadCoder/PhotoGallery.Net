@@ -26,8 +26,9 @@
                 @if (Request.IsAuthenticated)
                 {
                     @Html.ActionLink("Add Photo", "Index", "AddPhoto", routeValues: null, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1" })
+                    @Html.ActionLink("My Photos", "Filter", "Home", routeValues: new { categoryName = "My" }, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1" })
                 }
-                </ul>
+            </ul>
         </div>
     </div>
     <div class="col-md-9">

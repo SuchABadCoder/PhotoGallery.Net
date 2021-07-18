@@ -10,8 +10,8 @@
             @Html.Raw("<img style=\"width: 50 %; height: 50 %; \" src=\"data:image/jpeg;base64,"
                                           + Convert.ToBase64String(Model.Image) + "\" />")
             <p>@Model.Description</p>
-            @if (Model.OwnerName == ViewContext.HttpContext.User.Identity.Name)
-            {//ViewContext.HttpContext.User.IsInRole("admin")
+            @if (Model.OwnerName == ViewContext.HttpContext.User.Identity.Name || ViewContext.HttpContext.User.IsInRole("admin"))
+            {
                 @Html.ActionLink("Delete", "Delete", "ViewPhoto", routeValues: new { photoId = Model.Id }, htmlAttributes: new { @class = "btn btn-block btn-dark btn-sm m-1" })
             }
         </div>
